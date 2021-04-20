@@ -1,9 +1,11 @@
-import express, { request, response } from 'express';
+import 'reflect-metadata'
+import express from 'express';
+import './database';
+import { router } from './routes';
 
 const app = express();
 
-app.post("/", (request, response) => {
-  return response.json({message: "oi vc"})
-});
+app.use(express.json());
+app.use(router);
 
-app.listen(3333, () => console.log('voa guri'))
+app.listen(3333, () => console.log('Live on 3333'));
